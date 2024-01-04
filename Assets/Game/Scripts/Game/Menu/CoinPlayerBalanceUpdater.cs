@@ -22,7 +22,7 @@ namespace Game.Scripts.Game.Menu
             {
                 if (playerBalanceTxt != null)
                 {
-                    playerBalanceTxt.text = "<sprite=0>" + value + "<sprite=1>";
+                    playerBalanceTxt.text = value + "";
                 }
             }
         }

@@ -6,9 +6,12 @@ namespace Game.Scripts.Game.ShopLogic
 {
     public class ElementShopBtn : MonoBehaviour
     {
+        [SerializeField] private Sprite _activeBuyIcon;
+        [SerializeField] private Sprite _nonActiveBuyIcon;
         [SerializeField] private ShopElementData _elementData;
 
         [SerializeField] private Button _buyBtn;
+        [SerializeField] private Image _buyImage;
         [SerializeField] private Button _selectBtn;
         
         [SerializeField] private GameObject _selectMark;
@@ -31,6 +34,11 @@ namespace Game.Scripts.Game.ShopLogic
             }
             
             _selectMark.SetActive(false);
+        }
+
+        public void UpdateBuyBtn(int playerBalance)
+        {
+            _buyImage.sprite = playerBalance >= _elementData.Price ? _activeBuyIcon : _nonActiveBuyIcon;
         }
 
         public void Select()

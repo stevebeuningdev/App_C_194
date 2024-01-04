@@ -12,7 +12,6 @@ namespace Game.Scripts.Game.ShopLogic
         [SerializeField] private PlayerDatabase _playerDatabase;
         
         [SerializeField] private PanelMachine _panelMachine;
-        [SerializeField] private PanelBase _buyPanel;
         
         [SerializeField] private ShopElementContextData _contextData;
         [SerializeField] private List<ElementShopBtn> _shopBtns;
@@ -33,6 +32,9 @@ namespace Game.Scripts.Game.ShopLogic
         {
             InitializeShopElements();
             UpdateUiShopElements();
+            
+            UpdateBuyBtnsStatus(_playerDatabase.PlayerBalance);
+            _playerDatabase.OnPlayerBalanceChange += UpdateBuyBtnsStatus;
             _animationService = new AnimationService();
         }
 
@@ -44,7 +46,7 @@ namespace Game.Scripts.Game.ShopLogic
         private void ClickOnBuyShopElement(ElementShopBtn elementBtn)
         {
             _currentShopElementBtn = elementBtn;
-            _panelMachine.AddPanel(_buyPanel);
+            TryBuyElement(elementBtn);
             
             _click.Play();
         }
@@ -58,7 +60,6 @@ namespace Game.Scripts.Game.ShopLogic
                 elementBtn.ElementData.HasOpen = true;
                 Select(elementBtn);
                 
-                _panelMachine.CloseLastPanel();
                 _successBuy.Play();
             }
             else
@@ -91,7 +92,7 @@ namespace Game.Scripts.Game.ShopLogic
         {
             var currentElement = _contextData.GetCurrentElement();
             currentElement.HasOpen = true;
-            var currentElementsBtn = _shopBtns.FirstOrDefault(hook => hook.ElementData == currentElement);
+            var currentElementsBtn = _shopBtns.FirstOrDefault(element => element.ElementData == currentElement);
 
             if (currentElementsBtn != null)
             {
@@ -106,6 +107,14 @@ namespace Game.Scripts.Game.ShopLogic
             {
                 shopBtn.onBuy += ClickOnBuyShopElement;
                 shopBtn.onSelect += Select;
+            }
+        }
+
+        private void UpdateBuyBtnsStatus(int playerBalance)
+        {
+            foreach (var shopBtn in _shopBtns)
+            {
+                shopBtn.UpdateBuyBtn(playerBalance);
             }
         }
     }

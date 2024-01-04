@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f69c59a7aa89498d9cb8be393b58468, type: 3}
-  m_Name: ShopElement5
+  m_Script: {fileID: 11500000, guid: 1741ab5d65dbd47718757cd55cd7a7cc, type: 3}
+  m_Name: Day6
   m_EditorClassIdentifier: 
-  _price: 3500
+  _coinReward: 90

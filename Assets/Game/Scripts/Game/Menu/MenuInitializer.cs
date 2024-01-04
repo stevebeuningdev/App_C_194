@@ -1,3 +1,4 @@
+using Game.Scripts.Game.DailyBonus;
 using Game.Scripts.Game.ShopLogic;
 using UnityEngine;
 
@@ -6,9 +7,10 @@ namespace Game.Scripts.Game.Menu
     public class MenuInitializer : MonoBehaviour
     {
         [SerializeField] private ElementShopContext _shopContext;
-       
+        [SerializeField] private DailyRewardContext _dailyRewardContext;
+
         [SerializeField] private CoinPlayerBalanceUpdater _playerBalanceUpdater;
-        
+
         private void Start()
         {
             Initialize();
@@ -19,6 +21,7 @@ namespace Game.Scripts.Game.Menu
             _playerBalanceUpdater.Initialize();
 
             _shopContext.Initialize();
+            _dailyRewardContext.Initialize();
         }
     }
 }
