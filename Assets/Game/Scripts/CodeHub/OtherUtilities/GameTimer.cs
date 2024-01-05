@@ -9,11 +9,12 @@ namespace CodeHub.OtherUtilities
         private bool _isPause;
 
         public float SecondsFromStart => _secondsFromStart;
+        public Action OnEndTime;
 
-        public void Initialize()
+        public void Initialize(float startTime)
         {
-            _secondsFromStart = 0;
-            StartTimer();
+            _secondsFromStart = startTime;
+            PauseTimer();
         }
 
         private void Update()
@@ -38,9 +39,14 @@ namespace CodeHub.OtherUtilities
 
         private void CoreTimer()
         {
-            if (_isPause == false)
+            if (_isPause == true)
+                return;
+            
+            _secondsFromStart -= Time.deltaTime;
+            if (_secondsFromStart <= 0)
             {
-                _secondsFromStart += Time.deltaTime;
+                PauseTimer();
+                OnEndTime?.Invoke();
             }
         }
     }

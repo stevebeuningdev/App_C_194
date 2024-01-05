@@ -8,6 +8,7 @@ namespace CodeHub.OtherUtilities
     {
         private const string playerBalanceAlias = "playerBalanceAlias";
         private const string playerMoneyAlias = "playerMoneyAlias";
+        private const string playerBestGoalsAlias = "playerBestGoalsAlias";
         private const string playerScoreAlias = "playerScoreAlias";
 
         private const string hasEnableSoundAlias = "hasSoundAlias";
@@ -22,7 +23,7 @@ namespace CodeHub.OtherUtilities
         private const string currentSkinNumberAlias = "currentSkinNumberAlias";
         private const string bonusGameAlias = "bonusGameAlias";
 
-        private const string hasEnemyPackAlias = "hasEnemyPackAlias";
+        private const string hasSeenTutorialAlias = "HasSeenFirstTutorialAlias";
         private const string recordTimeAlias = "recordTimeAlias";
         private const string recordCountAlias = "recordCountAlias";
 
@@ -43,6 +44,16 @@ namespace CodeHub.OtherUtilities
             }
         }
 
+        public int BestGoal
+        {
+            get => PlayerPrefs.GetInt(playerBestGoalsAlias, 0);
+            set
+            {
+                PlayerPrefs.SetInt(playerBestGoalsAlias, value);
+                PlayerPrefs.Save();
+            }
+        }
+
         public int PlayerBalance
         {
             get => PlayerPrefs.GetInt(playerBalanceAlias, 500);
@@ -53,7 +64,7 @@ namespace CodeHub.OtherUtilities
                 OnPlayerBalanceChange?.Invoke(value);
             }
         }
-        
+
         public int PlayerRecord
         {
             get => PlayerPrefs.GetInt(recordCountAlias, 0);
@@ -69,7 +80,7 @@ namespace CodeHub.OtherUtilities
         {
             PlayerBalance += value;
         }
-        
+
         public void IncreasePlayerMoney(int value)
         {
             PlayerMoney += value;
@@ -112,10 +123,7 @@ namespace CodeHub.OtherUtilities
 
         public int VolumeSound
         {
-            get
-            {
-               return PlayerPrefs.GetInt(volumeSoundAlias, 4);
-            } 
+            get { return PlayerPrefs.GetInt(volumeSoundAlias, 4); }
             set
             {
                 PlayerPrefs.SetInt(volumeSoundAlias, value);
@@ -197,17 +205,17 @@ namespace CodeHub.OtherUtilities
             // Бонус недоступний
             return false;
         }
-        
-        public bool HasEnemyPack
+
+        public bool HasSeenFirstTutorial
         {
-            get => Convert.ToBoolean(PlayerPrefs.GetString(hasEnemyPackAlias, "False"));
+            get => Convert.ToBoolean(PlayerPrefs.GetString(hasSeenTutorialAlias, "False"));
             set
             {
-                PlayerPrefs.SetString(hasEnemyPackAlias, value.ToString());
+                PlayerPrefs.SetString(hasSeenTutorialAlias, value.ToString());
                 PlayerPrefs.Save();
             }
         }
-        
+
         public float RecordTime
         {
             get => PlayerPrefs.GetFloat(recordTimeAlias, 0);

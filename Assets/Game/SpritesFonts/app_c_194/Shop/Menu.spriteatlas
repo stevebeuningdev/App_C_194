@@ -1,0 +1,109 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Menu
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 8
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: c147439c94e1a423993f799f953f0f7b, type: 3}
+    - {fileID: 2800000, guid: 7703749981d46487fbd679aaf0d122a8, type: 3}
+    - {fileID: 2800000, guid: 4aa8b8c846cde49fea1c19c2532de0ed, type: 3}
+    - {fileID: 2800000, guid: bf022ad3bc5f646c6964b3e9934b6fcf, type: 3}
+    - {fileID: 2800000, guid: 36af123a6c54045c298e6e905f1fcd0e, type: 3}
+    - {fileID: 2800000, guid: 37b6583136c8b42f4865325f5107f422, type: 3}
+    - {fileID: 2800000, guid: 75f0164b19d35416caf0a27a79347d02, type: 3}
+    - {fileID: 2800000, guid: 1cb5d4f1dfbda42548c77294e451e7b2, type: 3}
+    - {fileID: 2800000, guid: cc4cbd7ada03042e1a000fe231850e53, type: 3}
+    - {fileID: 2800000, guid: 545ad0edd270942d6bcc2d973e37ae67, type: 3}
+    - {fileID: 2800000, guid: 5d686b84aca7c4fffa04c4611b9bcd38, type: 3}
+    - {fileID: 2800000, guid: 869783ebf4e4c403c98724e349cc4722, type: 3}
+    - {fileID: 2800000, guid: a65ce721db53845be976193f545ea6c7, type: 3}
+    - {fileID: 2800000, guid: a551cdabf1eb1487e81be221769dfc1c, type: 3}
+    - {fileID: 2800000, guid: ba4f674914d2d4e28a9b1328208af532, type: 3}
+    - {fileID: 2800000, guid: bca7afb5e4d234613b5955f50b6e547c, type: 3}
+    - {fileID: 2800000, guid: b5bc0a28d1cc5483898b921eb63967dc, type: 3}
+    - {fileID: 2800000, guid: 3c616ad50ea134c4a8607efe0aaf1343, type: 3}
+    - {fileID: 2800000, guid: 3c21dc8c5f51246099746222d497eb98, type: 3}
+    - {fileID: 2800000, guid: 18549689f5481482b9ab5e2f58b1a959, type: 3}
+    - {fileID: 2800000, guid: 3b927853520da4a47b67b71997974606, type: 3}
+    - {fileID: 2800000, guid: fd50933ef61464ed993e5c116d7c9ac6, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: a65ce721db53845be976193f545ea6c7, type: 3}
+  - {fileID: 21300000, guid: 37b6583136c8b42f4865325f5107f422, type: 3}
+  - {fileID: 21300000, guid: 1cb5d4f1dfbda42548c77294e451e7b2, type: 3}
+  - {fileID: 21300000, guid: 3b927853520da4a47b67b71997974606, type: 3}
+  - {fileID: 21300000, guid: bf022ad3bc5f646c6964b3e9934b6fcf, type: 3}
+  - {fileID: 21300000, guid: 5d686b84aca7c4fffa04c4611b9bcd38, type: 3}
+  - {fileID: 21300000, guid: bca7afb5e4d234613b5955f50b6e547c, type: 3}
+  - {fileID: 21300000, guid: 3c616ad50ea134c4a8607efe0aaf1343, type: 3}
+  - {fileID: 21300000, guid: b5bc0a28d1cc5483898b921eb63967dc, type: 3}
+  - {fileID: 21300000, guid: 4aa8b8c846cde49fea1c19c2532de0ed, type: 3}
+  - {fileID: 21300000, guid: ba4f674914d2d4e28a9b1328208af532, type: 3}
+  - {fileID: 21300000, guid: 18549689f5481482b9ab5e2f58b1a959, type: 3}
+  - {fileID: 21300000, guid: 7703749981d46487fbd679aaf0d122a8, type: 3}
+  - {fileID: 21300000, guid: 36af123a6c54045c298e6e905f1fcd0e, type: 3}
+  - {fileID: 21300000, guid: cc4cbd7ada03042e1a000fe231850e53, type: 3}
+  - {fileID: 21300000, guid: 75f0164b19d35416caf0a27a79347d02, type: 3}
+  - {fileID: 21300000, guid: a551cdabf1eb1487e81be221769dfc1c, type: 3}
+  - {fileID: 21300000, guid: 869783ebf4e4c403c98724e349cc4722, type: 3}
+  - {fileID: 21300000, guid: 3c21dc8c5f51246099746222d497eb98, type: 3}
+  - {fileID: 21300000, guid: c147439c94e1a423993f799f953f0f7b, type: 3}
+  - {fileID: 21300000, guid: 545ad0edd270942d6bcc2d973e37ae67, type: 3}
+  - {fileID: 21300000, guid: fd50933ef61464ed993e5c116d7c9ac6, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - button_select_pressed
+  - basket ball -3
+  - basket ball -5
+  - button_shop_preased
+  - basket ball -1
+  - button_buy_pressed
+  - button_daily bonus_enabled
+  - button_play_enabled
+  - button_daily bonus_pressed
+  - Back
+  - button_daily bonus_disabled
+  - button_shop_enabled
+  - paginator_disabled
+  - basket ball -2
+  - button_buy_disabled
+  - basket ball -4
+  - balance
+  - button_select_enabled
+  - button_play_pressed
+  - paginator_enabled
+  - button_buy_enabled
+  - settings
+  m_RenderDataMap: {}
+  m_Tag: Menu
+  m_IsVariant: 0

@@ -1512,11 +1512,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 523145111}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 144c734042cb4728b8748e7f0117d1d3, type: 3}
+  m_Script: {fileID: 11500000, guid: 8c99003b62cd8487a9501627eb52973d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _panelMachine: {fileID: 1808032185}
-  _panelBase: {fileID: 0}
+  _sceneName: Game
 --- !u!1 &530991019
 GameObject:
   m_ObjectHideFlags: 0
@@ -2142,7 +2141,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panelObject: {fileID: 620601760}
   objectToAnim: {fileID: 630411873}
-  escapeKeyPressed: 0
+  escapeKeyPressed: 1
 --- !u!114 &620601763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3079,7 +3078,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panelMachine: {fileID: 1808032185}
-  _panelBase: {fileID: 0}
+  _panelBase: {fileID: 7446365251954905948}
 --- !u!114 &863048785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4533,11 +4532,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5133559546689068371, guid: 40a5e32067caa4b8aab03e7262b0efd4, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -172.70001
+      value: -172.70007
       objectReference: {fileID: 0}
     - target: {fileID: 5133559546689068371, guid: 40a5e32067caa4b8aab03e7262b0efd4, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -231.23
+      value: -231.22998
       objectReference: {fileID: 0}
     - target: {fileID: 5133559546689068371, guid: 40a5e32067caa4b8aab03e7262b0efd4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6652,7 +6651,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b98aaa7b421e4864b69546fdb0903d2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _panelMachine: {fileID: 0}
+  _panelMachine: {fileID: 1808032185}
 --- !u!114 &1917470239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8359,7 +8358,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 14212940566167834, guid: 8fe35384eedaf48ff84e6e1e8903a606, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 266.085
+      value: 266.08502
       objectReference: {fileID: 0}
     - target: {fileID: 14212940566167834, guid: 8fe35384eedaf48ff84e6e1e8903a606, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -8943,7 +8942,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b98aaa7b421e4864b69546fdb0903d2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _panelMachine: {fileID: 0}
+  _panelMachine: {fileID: 1808032185}
 --- !u!224 &7446365251686598902
 RectTransform:
   m_ObjectHideFlags: 0
