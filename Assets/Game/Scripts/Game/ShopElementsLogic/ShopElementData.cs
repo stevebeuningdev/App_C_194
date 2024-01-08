@@ -6,11 +6,13 @@ namespace Game.Scripts.Game.ShopLogic
     [CreateAssetMenu(fileName = "ShopElementData", menuName = "ShopElementData", order = 1)]
     public class ShopElementData : ScriptableObject
     {
+        [SerializeField] private Sprite _gameIcon;
         [SerializeField] private int _price;
 
         private string _hasOpenAlias = "hasOpenAlias";
 
         public int Price => _price;
+        public Sprite GameIcon => _gameIcon;
 
         public bool HasOpen
         {

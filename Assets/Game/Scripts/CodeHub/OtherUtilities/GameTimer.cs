@@ -24,7 +24,7 @@ namespace CodeHub.OtherUtilities
 
         public string GetStringVisualizeTime(float time)
         {
-            return TimeSpan.FromSeconds(time).ToString(@"mm\:ss");
+            return TimeSpan.FromSeconds(time).ToString(@"ss\:ff");
         }
 
         public void PauseTimer()

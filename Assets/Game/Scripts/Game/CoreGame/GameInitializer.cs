@@ -1,19 +1,21 @@
+using Game.Scripts.Game.ShopLogic;
 using UnityEngine;
 
 namespace Game.Scripts.Game.CoreGame
 {
     public class GameInitializer : MonoBehaviour
     {
-        // Start is called before the first frame update
-        void Start()
+        [SerializeField] private ShopElementContextData _shopElementContextData;
+        [SerializeField] private GameContext _gameContext;
+
+        private void Start()
         {
-        
+            Initialize();
         }
 
-        // Update is called once per frame
-        void Update()
+        private void Initialize()
         {
-        
+            _gameContext.Initialize(_shopElementContextData.GetCurrentElement().GameIcon);
         }
     }
 }

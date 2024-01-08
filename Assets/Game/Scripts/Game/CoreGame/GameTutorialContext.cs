@@ -13,6 +13,7 @@ namespace Game.Scripts.Game.CoreGame
         private void Start()
         {
             CheckTutorial();
+            //todo disable tutorial after make first move
         }
 
         public void DisableTutorial()

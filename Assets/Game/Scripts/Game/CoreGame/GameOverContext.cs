@@ -23,6 +23,9 @@ namespace Game.Scripts.Game.CoreGame
         [SerializeField] private Button _adsBtn;
         [SerializeField] private UnityAdsButton _unityAdsButton;
 
+        [SerializeField] private GameObject _adsBtns;
+        [SerializeField] private GameObject _playBtn;
+
         private void Start()
         {
             _unityAdsButton.OnCanGetReward += GetRewardFromAds;
@@ -32,6 +35,7 @@ namespace Game.Scripts.Game.CoreGame
         {
             _panelMachine.AddPanel(_gameOverPanel);
             UpdateTxt();
+            CheckBalance();
         }
 
         public void CheckBestGoalsCount()
@@ -60,6 +64,14 @@ namespace Game.Scripts.Game.CoreGame
             _currentGoalsTxt.text = _gameContext.Goal + "";
             _rewardTxt.text = _gameContext.Score + "<sprite=0>";
             _watchAdsTxt.text = "Watch the ad and get " + _gameContext.Score * 2;
+        }
+
+        private void CheckBalance()
+        {
+            bool hasScore = _gameContext.Score > 0;
+
+            _adsBtns.gameObject.SetActive(hasScore);
+            _playBtn.gameObject.SetActive(!hasScore);
         }
     }
 }
