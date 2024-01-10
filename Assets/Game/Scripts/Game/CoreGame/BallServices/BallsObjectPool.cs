@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -38,6 +39,7 @@ namespace Game.Scripts.Game.CoreGame.BallServices
             ball.transform.localScale = Vector3.one;
             ball.EnableRigidbody();
             ball.KillTween();
+            ball.Visualize.DOKill();
             ball.Visualize.color = Color.white;
             ball.transform.rotation = Quaternion.identity;
         }

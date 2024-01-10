@@ -14,6 +14,7 @@ namespace Game.Scripts.Game.CoreGame
         [field: SerializeField] public GameOverContext GameOverContext;
         [field: SerializeField] public GameObject BallsParent;
         [field: SerializeField] public AudioContext AudioContext;
+        [field: SerializeField] public PauseContext PauseContext;
 
         [SerializeField] private Basket _basket;
         [SerializeField] private GameTimer _gameTimer;
@@ -70,6 +71,9 @@ namespace Game.Scripts.Game.CoreGame
 
         private void AddGameOver()
         {
+            if (PauseContext.ExitGameStatus)
+                return;
+
             HasEndGame = true;
             GameStateMachine.EnterState<EndGameState>();
         }

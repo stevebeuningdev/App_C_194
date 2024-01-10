@@ -38,7 +38,7 @@ namespace Game.Scripts.Game.CoreGame.BallServices
 
         public void MakeFade()
         {
-            if (!gameObject.activeSelf)
+            if (!gameObject.activeSelf|| _gameContext.PauseContext.ExitGameStatus)
                 return;
 
             _fadeTween = _visualize.DOFade(0, 2f).OnComplete(ReleaseBall);

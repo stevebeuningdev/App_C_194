@@ -15,6 +15,8 @@ namespace Game.Scripts.Game.CoreGame
         [SerializeField] private PanelBase _exitPanel;
 
         private bool _playerInputStatus;
+        
+        public bool ExitGameStatus { get; private set; }
 
         public void AddPausePanel()
         {
@@ -33,6 +35,7 @@ namespace Game.Scripts.Game.CoreGame
 
         public void ExitGame()
         {
+            ExitGameStatus = true;
             DOTween.KillAll();
             ChangeTimeScale(1);
             SceneLoader.Instance.SwitchToScene("Menu");
@@ -40,6 +43,7 @@ namespace Game.Scripts.Game.CoreGame
 
         public void RestartGame()
         {
+            ExitGameStatus = true;
             DOTween.KillAll();
             ChangeTimeScale(1);
             SceneLoader.Instance.SwitchToScene("Game");
