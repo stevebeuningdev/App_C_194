@@ -1,5 +1,4 @@
-using System.Collections.Generic;
-using DG.Tweening;
+using Game.Scripts.Game.CoreGame.Infrastructure;
 using UnityEngine;
 
 namespace Game.Scripts.Game.CoreGame.BallServices
@@ -8,47 +7,70 @@ namespace Game.Scripts.Game.CoreGame.BallServices
     {
         [field: SerializeField] public GameLine GameLine { get; private set; }
         [SerializeField] private BallsObjectPool _ballsObjectPool;
-        [SerializeField] private float _throwDuration;
+
         [field: SerializeField] public float ThrowStateDuration = 3f;
 
-        [SerializeField] private Basket _basket;
+        [SerializeField] private float _power = 5;
+        [SerializeField] private Vector3 _maxSpeed;
 
         private GameContext _gameContext;
         private LaunchBall _launchBall;
+        private Camera _mainCamera;
 
         public void Initialize(GameContext gameContext)
         {
             _launchBall = gameContext.LaunchBall;
             _gameContext = gameContext;
+            _mainCamera = Camera.main;
+            gameContext.PlayerInputController.OnStartMove += ChooseTarget;
+            gameContext.PlayerInputController.OnEndMove += EndChooseTarget;
         }
 
-        public void ThrowBall()
+        private void FixedUpdate()
+        {
+            GameLine.TryShowTrajectory(_launchBall.transform.position, GetSpeed());
+        }
+
+        private void ThrowBall()
         {
             var ball = GetInitBall();
-            ThrowAnimation(ball);
+            ball.Rigidbody2D.AddForce(GetSpeed(), ForceMode2D.Impulse);
+        }
+
+        private void ChooseTarget()
+        {
+            GameLine.EnableDraw(true);
+        }
+
+        private void EndChooseTarget()
+        {
+            GameLine.EnableDraw(false);
+            ThrowBall();
+
+            _gameContext.GameStateMachine.EnterState<ThrowBallState>();
+        }
+
+        private Vector3 GetSpeed()
+        {
+            var speed = (_mainCamera.ScreenToWorldPoint(Input.mousePosition) - _launchBall.transform.position) * _power;
+            return GetClampSpeed(speed);
         }
 
         private Ball GetInitBall()
         {
             var ball = _ballsObjectPool.Pool.Get();
 
-            ball.DisableRigidbody();
-
             ball.Initialize(_launchBall.Icon.sprite, _ballsObjectPool, _gameContext);
             ball.transform.position = _launchBall.transform.position;
             return ball;
         }
 
-        private void ThrowAnimation(Ball ball)
+        private Vector3 GetClampSpeed(Vector3 speed)
         {
-            ball.transform.DOJump(_basket.TopPoint.position, 1f, 1, _throwDuration).SetEase(Ease.Linear)
-                .OnComplete((
-                    () =>
-                    {
-                        ball.EnableRigidbody();
-                        ball.Rigidbody2D.velocity = Vector2.down * 10f;
-                        //ball.Rigidbody2D.AddForce(Vector2.down * 100);
-                    }));
+            var xSpeed = Mathf.Clamp(speed.x, -_maxSpeed.x, _maxSpeed.x);
+            var ySpeed = Mathf.Clamp(speed.y, -_maxSpeed.y, _maxSpeed.y);
+            var newSpeed = new Vector3(xSpeed, ySpeed, 0);
+            return newSpeed;
         }
     }
 }

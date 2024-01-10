@@ -17,8 +17,7 @@ namespace Game.Scripts.Game.CoreGame.BallServices
 
         private void GetBall(Ball ball)
         {
-            ball.transform.localScale = Vector3.one;
-            ball.EnableRigidbody();
+            InitBall(ball);
             ball.gameObject.SetActive(true);
         }
 
@@ -30,9 +29,17 @@ namespace Game.Scripts.Game.CoreGame.BallServices
         private Ball CreateBall()
         {
             var ball = Instantiate(_ballPrefab, _ballsParentTransform);
+            InitBall(ball);
+            return ball;
+        }
+
+        private void InitBall(Ball ball)
+        {
             ball.transform.localScale = Vector3.one;
             ball.EnableRigidbody();
-            return ball;
+            ball.KillTween();
+            ball.Visualize.color = Color.white;
+            ball.transform.rotation = Quaternion.identity;
         }
     }
 }

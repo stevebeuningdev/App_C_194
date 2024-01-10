@@ -1,37 +1,53 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Game.Scripts.Game.CoreGame.BallServices
 {
     public class GameLine : MonoBehaviour
     {
-        [SerializeField] private Vector2 _testSpeed;
-        [SerializeField] private LaunchBall _launch;
+        [SerializeField] private List<GameObject> _points;
+        [SerializeField] private float _timeOffset;
+        [SerializeField] private Vector3 _scaleOffset;
 
-        [SerializeField] private int _pointsCount = 34;
-        [SerializeField] private LineRenderer _lineRenderer;
+        private bool _canDraw;
 
-        private void FixedUpdate()
+        private void Start()
         {
-            ShowTrajectory(_launch.transform.position, _testSpeed);
+            ChangeScalePoints();
+            EnableDraw(false);
         }
 
-        private void ShowTrajectory(Vector2 origin, Vector2 speed)
+        public void EnableDraw(bool enable)
         {
-            Vector3[] points = new Vector3[_pointsCount];
-            _lineRenderer.positionCount = points.Length;
-            for (int i = 0; i < points.Length; i++)
+            _canDraw = enable;
+            foreach (var point in _points)
             {
-                float time = i * 0.1f;
-                points[i] = origin + speed * time + Physics2D.gravity * time * time / 2f;
-
-                // if (points[i].y < 0)
-                // {
-                //     _lineRenderer.positionCount = i + 1;
-                //     break;
-                // }
+                point.gameObject.SetActive(enable);
             }
+        }
 
-            _lineRenderer.SetPositions(points);
+        public void TryShowTrajectory(Vector2 origin, Vector2 speed)
+        {
+            if (!_canDraw) return;
+
+            for (int i = 0; i < _points.Count; i++)
+            {
+                float time = i * _timeOffset;
+                _points[i].transform.position = origin + speed * time + Physics2D.gravity * time * time / 2f;
+            }
+        }
+
+        [ContextMenu("ChangeScalePoints")]
+        private void ChangeScalePoints()
+        {
+            int i = 0;
+            foreach (var point in _points)
+            {
+                point.transform.localScale -= _scaleOffset * i;
+                i++;
+            }
         }
     }
 }

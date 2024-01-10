@@ -1,11 +1,13 @@
 using CodeHub.OtherUtilities;
 using DG.Tweening;
+using Game.Scripts.Game.CoreGame.BallServices;
 using UnityEngine;
 
 namespace Game.Scripts.Game.CoreGame
 {
     public class GameTutorialContext : MonoBehaviour
     {
+        [SerializeField] private PlayerInputController _playerInputController;
         [SerializeField] private PlayerDatabase _playerDatabase;
         [SerializeField] private GameObject _tutorialElements;
         [SerializeField] private GameObject _animHand;
@@ -13,13 +15,13 @@ namespace Game.Scripts.Game.CoreGame
         private void Start()
         {
             CheckTutorial();
-            //todo disable tutorial after make first move
         }
 
-        public void DisableTutorial()
+        private void DisableTutorial()
         {
             _tutorialElements.gameObject.SetActive(false);
             DOTween.Kill(_animHand.transform);
+            _playerInputController.OnEndMove -= DisableTutorial;
         }
 
         private void CheckTutorial()
@@ -29,6 +31,8 @@ namespace Game.Scripts.Game.CoreGame
             _tutorialElements.gameObject.SetActive(true);
             AnimateHand();
             _playerDatabase.HasSeenFirstTutorial = true;
+
+            _playerInputController.OnEndMove += DisableTutorial;
         }
 
         private void AnimateHand()

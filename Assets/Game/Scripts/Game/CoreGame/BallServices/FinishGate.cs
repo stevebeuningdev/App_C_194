@@ -2,8 +2,8 @@ using UnityEngine;
 
 namespace Game.Scripts.Game.CoreGame.BallServices
 {
-    public class Basket : MonoBehaviour
+    public class FinishGate : MonoBehaviour
     {
-       
+        
     }
 }
