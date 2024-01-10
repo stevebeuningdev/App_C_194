@@ -33,15 +33,15 @@ namespace Game.Scripts.Game.CoreGame
 
         public void ExitGame()
         {
-            ChangeTimeScale(1);
             DOTween.KillAll();
+            ChangeTimeScale(1);
             SceneLoader.Instance.SwitchToScene("Menu");
         }
 
         public void RestartGame()
         {
-            ChangeTimeScale(1);
             DOTween.KillAll();
+            ChangeTimeScale(1);
             SceneLoader.Instance.SwitchToScene("Game");
         }
 

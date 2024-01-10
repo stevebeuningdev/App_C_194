@@ -21,10 +21,13 @@ namespace Game.Scripts.Game.CoreGame.Infrastructure
         {
             gameContext.LaunchBall.gameObject.SetActive(false);
             gameContext.PlayerInputController.EnableMove(false);
+            gameContext.BallThrower.GameLine.EnableDraw(false);
 
             gameContext.GameOverContext.CheckBestGoalsCount();
             gameContext.GameOverContext.GetReward();
             gameContext.GameOverContext.AddGameOverPanel();
+
+            gameContext.AudioContext.PlayWinGame();
 
             gameContext.BallsParent.gameObject.SetActive(false);
         }

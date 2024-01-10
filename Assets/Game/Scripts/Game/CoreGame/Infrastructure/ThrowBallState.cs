@@ -22,6 +22,7 @@ namespace Game.Scripts.Game.CoreGame.Infrastructure
         {
             gameContext.LaunchBall.gameObject.SetActive(false);
             DOVirtual.DelayedCall(gameContext.BallThrower.ThrowStateDuration, () => EnterStartState());
+            gameContext.AudioContext.PlayThrowBall();
         }
 
         private void EnterStartState()

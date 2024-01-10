@@ -56,6 +56,7 @@ namespace Game.Scripts.Game.CoreGame
             _adsBtn.interactable = false;
             GetReward();
             _gameContext.SetScore(_gameContext.Score * 2);
+            _gameContext.AudioContext.PlayReward();
         }
 
         private void UpdateTxt()

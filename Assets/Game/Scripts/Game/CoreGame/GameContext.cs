@@ -13,6 +13,7 @@ namespace Game.Scripts.Game.CoreGame
         [field: SerializeField] public BallThrower BallThrower;
         [field: SerializeField] public GameOverContext GameOverContext;
         [field: SerializeField] public GameObject BallsParent;
+        [field: SerializeField] public AudioContext AudioContext;
 
         [SerializeField] private Basket _basket;
         [SerializeField] private GameTimer _gameTimer;
@@ -57,6 +58,8 @@ namespace Game.Scripts.Game.CoreGame
             AddScore();
 
             _gameRandomizer.RandomizePosition();
+
+            AudioContext.PlayGoal();
         }
 
         public void SetScore(int newScore)

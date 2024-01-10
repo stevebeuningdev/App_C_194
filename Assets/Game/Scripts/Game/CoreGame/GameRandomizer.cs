@@ -22,7 +22,8 @@ namespace Game.Scripts.Game.CoreGame
         public void RandomizePosition()
         {
             Vector3 randomBasketPosition = GetRandomPosition(_basketPositions);
-            _basket.transform.DOMove(randomBasketPosition, 2f).SetEase(Ease.OutBack);
+            _basket.transform.DOKill();
+            _basket.transform.DOMove(randomBasketPosition, 1.75f).SetEase(Ease.OutBack);
             RandomizeBallPosition(randomBasketPosition);
         }
 

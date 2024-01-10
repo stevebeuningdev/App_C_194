@@ -17,12 +17,16 @@ namespace Game.Scripts.Game.CoreGame.BallServices
         private Tween _fadeTween;
 
         private bool _enterStartGate;
+        private bool _hasActive;
+
+        public bool EnterStartGate => _enterStartGate;
 
         public void Initialize(Sprite gameIcon, BallsObjectPool ballsObjectPool, GameContext gameContext)
         {
             _gameContext = gameContext;
             _visualize.sprite = gameIcon;
             _enterStartGate = false;
+            _hasActive = true;
 
             BallsObjectPool = ballsObjectPool;
         }
@@ -67,6 +71,7 @@ namespace Game.Scripts.Game.CoreGame.BallServices
 
         private void OnCollisionEnter2D(Collision2D col)
         {
+            _gameContext.AudioContext.PlayHitBall();
             if (col.transform.GetComponent<Ground>() != null)
             {
                 MakeFade();
@@ -85,9 +90,10 @@ namespace Game.Scripts.Game.CoreGame.BallServices
         {
             if (other.transform.GetComponent<FinishGate>() != null)
             {
-                if (_enterStartGate)
+                if (_enterStartGate && _hasActive)
                 {
                     _enterStartGate = false;
+                    _hasActive = false;
                     _gameContext.MakeGoal();
                 }
             }
