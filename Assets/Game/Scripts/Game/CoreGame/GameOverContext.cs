@@ -54,8 +54,10 @@ namespace Game.Scripts.Game.CoreGame
         private void GetRewardFromAds()
         {
             _adsBtn.interactable = false;
+            _watchAdsTxt.gameObject.SetActive(false);
             GetReward();
             _gameContext.SetScore(_gameContext.Score * 2);
+            _rewardTxt.text = _gameContext.Score + "<sprite=0>";
             _gameContext.AudioContext.PlayReward();
         }
 
