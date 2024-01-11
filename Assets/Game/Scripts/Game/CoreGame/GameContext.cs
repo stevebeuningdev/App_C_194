@@ -53,6 +53,9 @@ namespace Game.Scripts.Game.CoreGame
 
         public void MakeGoal()
         {
+            if (HasEndGame)
+                return;
+
             Goal++;
             UpdateGoalTxt();
 
