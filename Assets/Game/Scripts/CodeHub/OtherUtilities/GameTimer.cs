@@ -24,6 +24,16 @@ namespace CodeHub.OtherUtilities
 
         public string GetStringVisualizeTime(float time)
         {
+            if (time >= 60)
+            {
+                return time + ":00";
+            }
+
+            if (time == 0)
+            {
+                return "00:00";
+            }
+
             return TimeSpan.FromSeconds(time).ToString(@"ss\:ff");
         }
 
@@ -41,10 +51,11 @@ namespace CodeHub.OtherUtilities
         {
             if (_isPause == true)
                 return;
-            
+
             _secondsFromStart -= Time.deltaTime;
             if (_secondsFromStart <= 0)
             {
+                _secondsFromStart = 0;
                 PauseTimer();
                 OnEndTime?.Invoke();
             }

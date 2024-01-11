@@ -24,7 +24,6 @@ namespace Game.Scripts.Game.CoreGame.Infrastructure
             gameContext.BallThrower.GameLine.EnableDraw(false);
 
             gameContext.GameOverContext.CheckBestGoalsCount();
-            gameContext.GameOverContext.GetReward();
             gameContext.GameOverContext.AddGameOverPanel();
 
             gameContext.AudioContext.PlayWinGame();

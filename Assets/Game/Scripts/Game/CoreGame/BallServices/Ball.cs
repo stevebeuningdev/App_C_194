@@ -40,7 +40,7 @@ namespace Game.Scripts.Game.CoreGame.BallServices
             if (!gameObject.activeSelf|| _gameContext.PauseContext.ExitGameStatus)
                 return;
 
-            _fadeTween = _visualize.DOFade(0, 2f).OnComplete(ReleaseBall);
+            _fadeTween = _visualize.DOFade(0, 1.4f).OnComplete(ReleaseBall);
         }
 
         public void DisableRigidbody()

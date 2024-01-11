@@ -8,11 +8,13 @@ namespace Game.Scripts.Game.CoreGame
     public class GameTutorialContext : MonoBehaviour
     {
         [SerializeField] private PlayerInputController _playerInputController;
+        [SerializeField] private GameContext _gameContext;
         [SerializeField] private PlayerDatabase _playerDatabase;
         [SerializeField] private GameObject _tutorialElements;
+        [SerializeField] private GameObject _tutorialPoints;
         [SerializeField] private GameObject _animHand;
 
-        private void Start()
+        public void Initialize()
         {
             CheckTutorial();
         }
@@ -21,7 +23,11 @@ namespace Game.Scripts.Game.CoreGame
         {
             _tutorialElements.gameObject.SetActive(false);
             DOTween.Kill(_animHand.transform);
+            
             _playerInputController.OnEndMove -= DisableTutorial;
+            _playerInputController.OnStartMove -= DisableTutorialPoints;
+            
+            _gameContext.GameTimer.StartTimer();
         }
 
         private void CheckTutorial()
@@ -29,10 +35,19 @@ namespace Game.Scripts.Game.CoreGame
             if (HasSeenTutorial()) return;
 
             _tutorialElements.gameObject.SetActive(true);
-            AnimateHand();
             _playerDatabase.HasSeenFirstTutorial = true;
+            
+            _gameContext.GameTimer.PauseTimer();
+
+            AnimateHand();
 
             _playerInputController.OnEndMove += DisableTutorial;
+            _playerInputController.OnStartMove += DisableTutorialPoints;
+        }
+
+        private void DisableTutorialPoints()
+        {
+            _tutorialPoints.gameObject.SetActive(false);
         }
 
         private void AnimateHand()

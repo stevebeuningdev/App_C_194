@@ -35,6 +35,8 @@ namespace Game.Scripts.Game.CoreGame
             _panelMachine.AddPanel(_gameOverPanel);
             UpdateTxt();
             CheckBalance();
+            
+            GetReward();
         }
 
         public void CheckBestGoalsCount()

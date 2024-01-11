@@ -27,6 +27,7 @@ namespace Game.Scripts.Game.CoreGame
         public int Score { get; private set; }
         public int Goal { get; private set; }
         public bool HasEndGame { get; private set; }
+        public GameTimer GameTimer => _gameTimer;
 
         public GameStateMachine GameStateMachine { get; private set; }
 
